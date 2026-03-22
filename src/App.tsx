@@ -3,6 +3,7 @@ import { useReferential } from './hooks/useReferential';
 import { RefsContext } from './context/RefsContext';
 import { Banner } from './components/Banner';
 import { Header } from './components/Header';
+import { PrintView } from './components/PrintView';
 import { ExperienceSection } from './components/ExperienceSection';
 import { MissionsSection } from './components/MissionsSection';
 import { ProjectsSection } from './components/ProjectsSection';
@@ -35,9 +36,10 @@ function App() {
       techIcon: (name) => techMap.get(name),
       companyIcon: (name) => companyMap.get(name),
     }}>
+      <PrintView profile={profile} />
       <div className="cv-root">
-        <Banner />
-        <div className="cv-container">
+        <Banner profile={profile} />
+        <div className="cv-container" id="cv-content">
           <Header profile={profile} />
           <main>
             <MissionsSection missions={profile.missions} />
