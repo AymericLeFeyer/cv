@@ -8,9 +8,17 @@ export function Banner({ profile: _ }: { profile: Profile }) {
   async function handlePdf() {
     if (loading) return;
     setLoading(true);
+    // On ouvre la fenêtre de façon synchrone pour éviter le blocage popup de Safari iOS
+    const newWindow = window.open('', '_blank');
     try {
       const url = await exportToPdfBlob('cv-print');
-      window.open(url, '_blank');
+      if (newWindow) {
+        newWindow.location.href = url;
+      } else {
+        window.location.href = url;
+      }
+    } catch {
+      newWindow?.close();
     } finally {
       setLoading(false);
     }
