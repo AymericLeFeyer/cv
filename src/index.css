@@ -1035,3 +1035,40 @@ a {
   border-radius: 4px;
   padding: 2px 7px;
 }
+
+/* ============================================================
+   MEDIA PRINT — impression native, PDF texte sélectionnable
+   ============================================================ */
+
+@page {
+  margin: 0;
+  size: A4 portrait;
+}
+
+@media print {
+  .banner,
+  .cv-root {
+    display: none !important;
+  }
+
+  .print-view {
+    position: static !important;
+    left: auto !important;
+    width: 100% !important;
+    font-size: 12px !important;
+  }
+
+  .pv-mission-header,
+  .timeline-header {
+    break-after: avoid;
+  }
+
+  .formation-item {
+    break-inside: avoid;
+  }
+
+  a {
+    text-decoration: none !important;
+    color: inherit !important;
+  }
+}
