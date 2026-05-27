@@ -82,9 +82,9 @@ export function MissionsSection({ missions }: { missions: Mission[] }) {
   const professional = missions
     .filter(m => !m.is_side_project)
     .sort((a, b) => {
-      const aDate = a.start_date === 'Present' ? '9999' : a.start_date;
-      const bDate = b.start_date === 'Present' ? '9999' : b.start_date;
-      return bDate.localeCompare(aDate);
+      const aEnd = a.end_date === 'Present' ? '9999' : a.end_date;
+      const bEnd = b.end_date === 'Present' ? '9999' : b.end_date;
+      return bEnd.localeCompare(aEnd);
     });
 
   return (
